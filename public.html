@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ABC Capital — a clear, thoughtful approach to capital, markets, and long-term opportunity.">
+  <title>ABC Capital | Clarity for What's Next</title>
+  <style>
+    :root {
+      --navy: #102b3f;
+      --navy-deep: #0a1f30;
+      --teal: #39c6b0;
+      --teal-dark: #168f83;
+      --ink: #172c3b;
+      --muted: #607382;
+      --paper: #f5f8f7;
+      --white: #fff;
+      --line: #e0e9e7;
+      --gold: #e7bd74;
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(13, 41, 56, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--paper); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar { background: var(--navy-deep); color: #c8d7dd; font-size: .82rem; }
+    .topbar-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 9px 0; }
+    .topbar strong { color: #fff; font-weight: 600; }
+    .topbar-links { display: flex; gap: 18px; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(224,233,231,.9); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 1.1rem; font-weight: 800; letter-spacing: -.04em; color: var(--navy); white-space: nowrap; }
+    .brand-mark { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 12px; color: var(--navy-deep); background: var(--teal); font-weight: 900; font-size: 1.05rem; }
+    .brand small { display: block; font-size: .59rem; letter-spacing: .22em; color: var(--muted); font-weight: 700; margin-top: -4px; }
+    .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.3vw, 30px); font-size: .91rem; color: #455c6b; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--teal-dark); }
+    .nav-cta, .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border: 0; border-radius: 999px; padding: 13px 20px; background: var(--navy); color: white; font: inherit; font-weight: 700; cursor: pointer; transition: transform .2s, background .2s, box-shadow .2s; }
+    .nav-cta:hover, .btn:hover { transform: translateY(-2px); background: #173f57; box-shadow: 0 9px 22px rgba(16,43,63,.18); }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: white; border-radius: 12px; padding: 9px 12px; font-size: 1.1rem; cursor: pointer; }
+    .hero { overflow: hidden; position: relative; background: var(--navy-deep); color: white; }
+    .hero:before { content: ""; position: absolute; width: 600px; height: 600px; border-radius: 50%; right: -150px; top: -250px; background: radial-gradient(circle, rgba(57,198,176,.23), rgba(57,198,176,0) 68%); pointer-events: none; }
+    .hero:after { content: ""; position: absolute; width: 500px; height: 500px; border: 1px solid rgba(255,255,255,.08); border-radius: 50%; right: -90px; bottom: -350px; box-shadow: 0 0 0 55px rgba(255,255,255,.025), 0 0 0 110px rgba(255,255,255,.02); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; padding-top: 86px; padding-bottom: 84px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--teal); text-transform: uppercase; letter-spacing: .15em; font-size: .74rem; font-weight: 800; }
+    .eyebrow:before { content: ""; width: 25px; height: 2px; background: currentColor; }
+    h1 { font-size: clamp(2.8rem, 5.3vw, 5rem); line-height: 1.04; letter-spacing: -.065em; margin: 21px 0; max-width: 690px; }
+    h1 span { color: var(--teal); }
+    .hero-copy { max-width: 565px; color: #c4d4dc; font-size: 1.08rem; margin: 0 0 29px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
+    .btn-primary { background: var(--teal); color: var(--navy-deep); }
+    .btn-primary:hover { background: #65dcc9; }
+    .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.28); }
+    .btn-ghost:hover { background: rgba(255,255,255,.08); }
+    .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 29px; color: #a9bec9; font-size: .83rem; }
+    .note-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; box-shadow: 0 0 0 5px rgba(57,198,176,.12); }
+    .visual-card { position: relative; padding: 26px; border: 1px solid rgba(255,255,255,.15); background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035)); border-radius: 28px; box-shadow: 0 35px 70px rgba(0,0,0,.18); }
+    .visual-top { display: flex; justify-content: space-between; align-items: center; color: #c3d3da; font-size: .83rem; }
+    .status { border: 1px solid rgba(57,198,176,.35); color: var(--teal); background: rgba(57,198,176,.09); padding: 5px 10px; border-radius: 999px; font-size: .72rem; }
+    .chart { width: 100%; height: auto; margin: 23px 0 8px; display: block; }
+    .visual-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .mini-stat { padding: 15px; border-radius: 16px; background: rgba(7,25,38,.42); }
+    .mini-stat span { display: block; color: #a8bbc6; font-size: .75rem; }
+    .mini-stat strong { display: block; font-size: 1.12rem; margin-top: 4px; }
+    .mini-stat em { color: var(--teal); font-style: normal; font-size: .78rem; }
+    .trust-strip { background: #fff; border-bottom: 1px solid var(--line); }
+    .trust-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 22px 0; }
+    .trust-item { display: flex; align-items: center; justify-content: center; gap: 12px; color: #4d6471; font-size: .91rem; font-weight: 650; }
+    .trust-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 11px; background: #e7f8f4; color: var(--teal-dark); font-size: 1rem; }
+    section { padding: 88px 0; }
+    .section-head { max-width: 680px; margin-bottom: 36px; }
+    .section-head.center { text-align: center; margin-inline: auto; }
+    .section-head.center .eyebrow { justify-content: center; }
+    h2 { color: var(--navy); font-size: clamp(2rem, 3.5vw, 3.1rem); line-height: 1.12; letter-spacing: -.05em; margin: 14px 0; }
+    .section-head p { color: var(--muted); font-size: 1.03rem; margin: 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card { padding: 27px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: #b7e7de; }
+    .service-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 15px; background: #e7f8f4; color: var(--teal-dark); font-size: 1.35rem; }
+    .service-card h3 { margin: 21px 0 9px; font-size: 1.14rem; color: var(--navy); }
+    .service-card p { color: var(--muted); margin: 0 0 19px; font-size: .93rem; }
+    .text-link { display: inline-flex; align-items: center; gap: 7px; color: var(--teal-dark); font-size: .9rem; font-weight: 750; }
+    .text-link:hover { gap: 11px; }
+    .about { background: #eaf2f1; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+    .about-visual { min-height: 390px; position: relative; display: grid; place-items: center; border-radius: 28px; overflow: hidden; background: var(--navy); }
+    .about-visual:before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(57,198,176,.27), transparent 50%); }
+    .orbit { width: 250px; height: 250px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; position: relative; display: grid; place-items: center; }
+    .orbit:before, .orbit:after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; }
+    .orbit:before { inset: 27px; } .orbit:after { inset: 58px; }
+    .orbit-core { z-index: 1; width: 104px; height: 104px; border-radius: 30px; display: grid; place-items: center; background: var(--teal); color: var(--navy); font-size: 2.3rem; font-weight: 900; transform: rotate(-8deg); }
+    .floating-label { position: absolute; padding: 12px 15px; border: 1px solid rgba(255,255,255,.17); background: rgba(255,255,255,.09); backdrop-filter: blur(8px); border-radius: 13px; color: #fff; font-size: .8rem; }
+    .floating-label.one { top: 17%; left: 8%; } .floating-label.two { bottom: 17%; right: 7%; }
+    .about-copy p { color: var(--muted); }
+    .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; margin-top: 28px; }
+    .principle { display: flex; gap: 11px; align-items: flex-start; }
+    .check { width: 23px; height: 23px; flex: 0 0 23px; display: grid; place-items: center; background: #d4f3eb; color: var(--teal-dark); border-radius: 50%; font-size: .8rem; font-weight: 900; margin-top: 2px; }
+    .principle strong { display: block; color: var(--navy); font-size: .93rem; }
+    .principle span { color: var(--muted); font-size: .83rem; display: block; margin-top: 3px; }
+    .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; counter-reset: step; }
+    .approach-item { border-top: 1px solid var(--line); padding-top: 23px; counter-increment: step; }
+    .approach-item:before { content: "0" counter(step); color: var(--teal-dark); font-size: .78rem; letter-spacing: .12em; font-weight: 850; }
+    .approach-item h3 { color: var(--navy); margin: 13px 0 7px; }
+    .approach-item p { color: var(--muted); font-size: .93rem; margin: 0; }
+    .cta-section { padding: 0 0 88px; }
+    .cta-panel { position: relative; overflow: hidden; padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 30px; border-radius: 28px; color: #fff; background: var(--navy); }
+    .cta-panel:after { content: ""; position: absolute; width: 300px; height: 300px; right: 16%; top: -220px; border-radius: 50%; border: 1px solid rgba(57,198,176,.4); box-shadow: 0 0 0 35px rgba(57,198,176,.05), 0 0 0 70px rgba(57,198,176,.04); }
+    .cta-panel > * { position: relative; z-index: 1; }
+    .cta-panel h2 { color: white; margin: 0 0 9px; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    .cta-panel p { color: #bfd0d8; margin: 0; max-width: 560px; }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 60px; }
+    .contact-details { display: grid; gap: 17px; margin-top: 28px; }
+    .contact-line { display: flex; gap: 13px; align-items: flex-start; color: var(--muted); font-size: .93rem; }
+    .contact-line .service-icon { width: 40px; height: 40px; flex: 0 0 40px; font-size: 1rem; }
+    .contact-line strong { display: block; color: var(--navy); margin-bottom: 2px; }
+    .contact-form { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 30px; box-shadow: 0 10px 35px rgba(13,41,56,.05); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { display: block; color: var(--navy); font-size: .83rem; font-weight: 750; margin-bottom: 7px; }
+    input, select, textarea { width: 100%; border: 1px solid #d9e4e2; border-radius: 12px; padding: 13px 14px; color: var(--ink); background: #fbfdfc; font: inherit; font-size: .92rem; outline: none; transition: border .2s, box-shadow .2s; }
+    input:focus, select:focus, textarea:focus { border-color: var(--teal-dark); box-shadow: 0 0 0 3px rgba(57,198,176,.14); }
+    .field { margin-bottom: 17px; }
+    textarea { min-height: 115px; resize: vertical; }
+    .form-footnote { font-size: .78rem; color: var(--muted); margin: 12px 0 0; }
+    .form-message { display: none; padding: 12px 14px; margin-top: 14px; border-radius: 12px; color: #126a5e; background: #e4f8f3; font-size: .9rem; }
+    footer { background: var(--navy-deep); color: #bdcdd5; padding: 34px 0 24px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 35px; padding-bottom: 27px; }
+    footer .brand { color: white; }
+    footer .brand small { color: #93aab6; }
+    .footer-copy { max-width: 390px; color: #9fb3be; font-size: .87rem; margin-top: 14px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 22px; font-size: .87rem; }
+    .footer-links a:hover { color: var(--teal); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 20px; display: flex; justify-content: space-between; gap: 20px; color: #8fa6b2; font-size: .77rem; }
+    .disclaimer { max-width: 720px; margin-top: 13px; color: #8fa6b2; font-size: .75rem; }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 42px; padding-top: 65px; }
+      .visual-card { max-width: 600px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 38px; }
+      .about-visual { min-height: 330px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { gap: 14px; }
+      .nav-cta { display: none; }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(100% - 30px, 1160px); }
+      .topbar-inner { justify-content: center; text-align: center; }
+      .topbar-links { display: none; }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--line); padding: 14px 20px 20px; flex-direction: column; align-items: stretch; gap: 0; box-shadow: 0 15px 25px rgba(16,43,63,.08); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 0; border-bottom: 1px solid #edf2f1; }
+      .nav-links a:last-child { border-bottom: 0; }
+      .hero-grid { padding-top: 54px; padding-bottom: 55px; }
+      h1 { font-size: clamp(2.6rem, 13vw, 4rem); }
+      .hero-copy { font-size: 1rem; }
+      .visual-card { padding: 19px; }
+      .trust-inner { grid-template-columns: 1fr; gap: 13px; padding: 20px 0; }
+      .trust-item { justify-content: flex-start; }
+      section { padding: 65px 0; }
+      .services-grid, .approach-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 23px; }
+      .principles { grid-template-columns: 1fr; }
+      .cta-section { padding-bottom: 65px; }
+      .cta-panel { padding: 30px 24px; align-items: flex-start; flex-direction: column; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .contact-form { padding: 22px; }
+      .footer-top, .footer-bottom { flex-direction: column; }
+      .footer-links { gap: 14px 20px; }
+      .about-visual { min-height: 290px; }
+      .orbit { transform: scale(.84); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><strong>ABC Capital</strong> · Thoughtful perspectives. Clear decisions.</span>
+      <div class="topbar-links"><a href="#services">Our services</a><a href="#contact">Contact us</a></div>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="ABC Capital home">
+        <span class="brand-mark">A</span><span>ABC CAPITAL<small>CLARITY FOR WHAT'S NEXT</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#services">What we do</a><a href="#about">About us</a><a href="#approach">Our approach</a><a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">A clearer view of capital</div>
+          <h1>Make your next move with <span>confidence.</span></h1>
+          <p class="hero-copy">At ABC Capital, we believe good financial decisions begin with clear information, thoughtful analysis, and a long-term perspective.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services">Explore what we do <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="#about">Get to know us</a>
+          </div>
+          <div class="hero-note"><span class="note-dot"></span> Insight-led thinking. People-first relationships.</div>
+        </div>
+        <div class="visual-card" aria-label="Illustrative market insights graphic">
+          <div class="visual-top"><span>Market perspective</span><span class="status">Long-term view</span></div>
+          <svg class="chart" viewBox="0 0 520 245" role="img" aria-label="Illustrative upward-trending line chart with no live market data">
+            <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#39c6b0" stop-opacity=".30"/><stop offset="100%" stop-color="#39c6b0" stop-opacity="0"/></linearGradient></defs>
+            <g stroke="#ffffff" stroke-opacity=".10" stroke-width="1"><path d="M20 35H500M20 80H500M20 125H500M20 170H500M20 215H500"/><path d="M80 20V220M160 20V220M240 20V220M320 20V220M400 20V220M480 20V220"/></g>
+            <path d="M20 195 C55 180,62 191,92 158 S135 170,165 137 S207 148,238 111 S280 132,311 90 S350 103,380 67 S425 86,450 45 S478 52,500 26 L500 220 L20 220Z" fill="url(#area)"/>
+            <path d="M20 195 C55 180,62 191,92 158 S135 170,165 137 S207 148,238 111 S280 132,311 90 S350 103,380 67 S425 86,450 45 S478 52,500 26" fill="none" stroke="#39c6b0" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="500" cy="26" r="6" fill="#39c6b0" stroke="#0a1f30" stroke-width="3"/>
+            <text x="20" y="239" fill="#a8bbc6" font-size="11">ILLUSTRATIVE TREND · NOT LIVE DATA</text>
+          </svg>
+          <div class="visual-bottom">
+            <div class="mini-stat"><span>Our focus</span><strong>Clarity first</strong><em>Understand before acting</em></div>
+            <div class="mini-stat"><span>Our mindset</span><strong>Long-term</strong><em>Built around your goals</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-inner">
+        <div class="trust-item"><span class="trust-icon">⌕</span> Research-led perspective</div>
+        <div class="trust-item"><span class="trust-icon">◇</span> Transparent communication</div>
+        <div class="trust-item"><span class="trust-icon">↗</span> Focus on the bigger picture</div>
+      </div>
+    </div>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow">What we do</div>
+          <h2>Financial thinking, made clearer.</h2>
+          <p>Explore the areas where ABC Capital can help you ask better questions, understand opportunities, and make more informed decisions.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⌁</div>
+            <h3>Investment Insights</h3>
+            <p>Explore market themes, investment concepts, and the factors that can shape financial opportunities.</p>
+            <a class="text-link" href="#contact">Discuss your goals <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">▥</div>
+            <h3>Research & Analysis</h3>
+            <p>Bring context to complex information with structured research and a focus on the details that matter.</p>
+            <a class="text-link" href="#contact">Explore research <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">◎</div>
+            <h3>Capital Strategy</h3>
+            <p>Think through capital priorities, financial objectives, and the trade-offs behind important decisions.</p>
+            <a class="text-link" href="#contact">Start a conversation <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⌗</div>
+            <h3>Market Perspectives</h3>
+            <p>Make sense of market developments with balanced commentary and a broader view of changing conditions.</p>
+            <a class="text-link" href="#contact">Share a question <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">↗</div>
+            <h3>Financial Planning Conversations</h3>
+            <p>Organize your priorities and identify the questions worth discussing before taking your next step.</p>
+            <a class="text-link" href="#contact">Talk with us <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✳</div>
+            <h3>Business & Industry Research</h3>
+            <p>Understand industries, business models, and competitive dynamics through a curious, analytical lens.</p>
+            <a class="text-link" href="#contact">Learn more <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-visual" aria-label="Abstract illustration representing connected financial ideas">
+          <span class="floating-label one">Insight</span>
+          <div class="orbit"><div class="orbit-core">ABC</div></div>
+          <span class="floating-label two">Perspective</span>
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">About ABC Capital</div>
+          <h2>Built around better questions and clearer choices.</h2>
+          <p>Financial decisions can feel complicated. Our aim is to make the information behind them easier to understand—by listening carefully, looking at the details, and keeping the bigger picture in view.</p>
+          <p>We value straightforward communication and thoughtful analysis. Whether you're exploring a new idea or trying to understand a changing market, we want every conversation to leave you better informed.</p>
+          <div class="principles">
+            <div class="principle"><span class="check">✓</span><div><strong>Clarity</strong><span>Plain language, useful context.</span></div></div>
+            <div class="principle"><span class="check">✓</span><div><strong>Integrity</strong><span>Open, responsible communication.</span></div></div>
+            <div class="principle"><span class="check">✓</span><div><strong>Curiosity</strong><span>Questions that go beyond the surface.</span></div></div>
+            <div class="principle"><span class="check">✓</span><div><strong>Perspective</strong><span>Today's details, tomorrow's goals.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our approach</div>
+          <h2>Simple steps. Thoughtful decisions.</h2>
+          <p>A useful financial conversation should help you move from uncertainty to a clearer understanding of your options.</p>
+        </div>
+        <div class="approach-grid">
+          <article class="approach-item"><h3>Listen & understand</h3><p>We start with your questions, priorities, and the context behind the decision.</p></article>
+          <article class="approach-item"><h3>Research & clarify</h3><p>We organize relevant information, examine assumptions, and explain the key considerations.</p></article>
+          <article class="approach-item"><h3>Consider next steps</h3><p>We help frame the choices and questions that can guide a more informed next conversation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="container cta-section">
+      <div class="cta-panel">
+        <div><h2>Have a question in mind?</h2><p>Tell us what you're exploring. A good conversation can be the first step toward greater clarity.</p></div>
+        <a class="btn btn-primary" href="#contact">Start a conversation <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div>
+          <div class="eyebrow">Get in touch</div>
+          <h2>Let's talk about what matters to you.</h2>
+          <p style="color:var(--muted)">Use the form to share a question or tell us what you'd like to learn more about. Replace the sample contact details with your official company information before publishing.</p>
+          <div class="contact-details">
+            <div class="contact-line"><span class="service-icon">✉</span><div><strong>Email</strong><a href="mailto:hello@abccapital.example">hello@abccapital.example</a></div></div>
+            <div class="contact-line"><span class="service-icon">⌖</span><div><strong>Office</strong><span>Add your office address here</span></div></div>
+            <div class="contact-line"><span class="service-icon">◷</span><div><strong>Business hours</strong><span>Monday–Friday · 9:00 AM–5:00 PM</span></div></div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="e.g. Priya Sharma" required></div>
+            <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+          </div>
+          <div class="field"><label for="interest">What would you like to discuss?</label>
+            <select id="interest" name="interest" required>
+              <option value="" disabled selected>Select a topic</option>
+              <option>Investment insights</option><option>Research and analysis</option><option>Capital strategy</option><option>Market perspectives</option><option>Business and industry research</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="message">Your message</label><textarea id="message" name="message" placeholder="Tell us a little about what you're looking for..." required></textarea></div>
+          <button class="btn btn-primary" type="submit">Prepare enquiry <span aria-hidden="true">→</span></button>
+          <p class="form-footnote">Demo form only. It does not send or store your details; connect it to a secure form service before going live.</p>
+          <div class="form-message" id="formMessage" role="status">Thanks! This demo form is working locally, but no message has been sent. Connect a form service to receive enquiries.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a class="brand" href="#home"><span class="brand-mark">A</span><span>ABC CAPITAL<small>CLARITY FOR WHAT'S NEXT</small></span></a>
+          <p class="footer-copy">Clear information. Thoughtful perspectives. A more informed way to approach financial decisions.</p>
+        </div>
+        <div class="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="#approach">Our approach</a><a href="#contact">Contact</a><a href="#home">Back to top ↑</a></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> ABC Capital. All rights reserved.</span><span>Privacy · Terms</span></div>
+      <p class="disclaimer">Important: This is a sample website template. Company details, services, and contact information are illustrative and must be verified and replaced before publication. Nothing on this page constitutes investment advice, an offer, or a solicitation.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation menu');
+      menuToggle.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      document.getElementById('formMessage').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
