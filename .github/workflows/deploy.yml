@@ -1,5 +1,5 @@
 
-name: Deploy ABC Capital Website
+name: Deploy Moneta Capital Website
 
 on:
   push:
