@@ -27,7 +27,6 @@ jobs:
         run: |
           mkdir -p public
           cp public.html public/index.html
-          cp moneta-image.png public/moneta-image.png
           touch public/.nojekyll
 
       - name: Upload website artifact
