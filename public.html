@@ -56,8 +56,15 @@
     .btn-ghost:hover { background: rgba(255,255,255,.08); }
     .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 29px; color: #A8937A; font-size: .83rem; }
     .note-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 5px rgba(212,169,106,.18); }
-    .hero-image-wrap { position: relative; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.30), 0 0 0 1px rgba(196,154,60,.20); }
-    .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 28px; }
+    .visual-card { position: relative; padding: 26px; border: 1px solid rgba(196,154,60,.25); background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.04)); border-radius: 28px; box-shadow: 0 35px 70px rgba(0,0,0,.22); }
+    .visual-top { display: flex; justify-content: space-between; align-items: center; color: #C8B89A; font-size: .83rem; }
+    .status { border: 1px solid rgba(196,154,60,.40); color: var(--gold); background: rgba(196,154,60,.10); padding: 5px 10px; border-radius: 999px; font-size: .72rem; }
+    .chart { width: 100%; height: auto; margin: 23px 0 8px; display: block; }
+    .visual-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .mini-stat { padding: 15px; border-radius: 16px; background: rgba(28,23,19,.45); }
+    .mini-stat span { display: block; color: #A8937A; font-size: .75rem; }
+    .mini-stat strong { display: block; font-size: 1.12rem; margin-top: 4px; color: #F5EAD5; }
+    .mini-stat em { color: var(--gold); font-style: normal; font-size: .78rem; }
     /* Why Choose Us */
     .why-section { background: var(--paper); }
     .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 10px; }
@@ -228,8 +235,20 @@
           </div>
           <div class="hero-note"><span class="note-dot"></span> Insight-led thinking. People-first relationships.</div>
         </div>
-        <div class="hero-image-wrap" aria-label="Moneta Capital financial services">
-          <img src="moneta-image.png" alt="Moneta Capital — Your Complete Financial Partner" loading="eager" />
+        <div class="visual-card" aria-label="Illustrative market insights graphic">
+          <div class="visual-top"><span>Market perspective</span><span class="status">Long-term view</span></div>
+          <svg class="chart" viewBox="0 0 520 245" role="img" aria-label="Illustrative upward-trending line chart with no live market data">
+            <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C49A3C" stop-opacity=".35"/><stop offset="100%" stop-color="#C49A3C" stop-opacity="0"/></linearGradient></defs>
+            <g stroke="#ffffff" stroke-opacity=".07" stroke-width="1"><path d="M20 35H500M20 80H500M20 125H500M20 170H500M20 215H500"/><path d="M80 20V220M160 20V220M240 20V220M320 20V220M400 20V220M480 20V220"/></g>
+            <path d="M20 195 C55 180,62 191,92 158 S135 170,165 137 S207 148,238 111 S280 132,311 90 S350 103,380 67 S425 86,450 45 S478 52,500 26 L500 220 L20 220Z" fill="url(#area)"/>
+            <path d="M20 195 C55 180,62 191,92 158 S135 170,165 137 S207 148,238 111 S280 132,311 90 S350 103,380 67 S425 86,450 45 S478 52,500 26" fill="none" stroke="#C49A3C" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="500" cy="26" r="6" fill="#D4A96A" stroke="#1C1713" stroke-width="3"/>
+            <text x="20" y="239" fill="#A8937A" font-size="11">ILLUSTRATIVE TREND · NOT LIVE DATA</text>
+          </svg>
+          <div class="visual-bottom">
+            <div class="mini-stat"><span>Our focus</span><strong>Clarity first</strong><em>Understand before acting</em></div>
+            <div class="mini-stat"><span>Our mindset</span><strong>Long-term</strong><em>Built around your goals</em></div>
+          </div>
         </div>
       </div>
     </section>
@@ -400,7 +419,7 @@
           <h2>Let's talk about what matters to you.</h2>
           <p style="color:var(--muted)">Use the form to share a question or tell us what you'd like to learn more about. Replace the sample contact details with your official company information before publishing.</p>
           <div class="contact-details">
-            <div class="contact-line"><span class="service-icon">✉</span><div><strong>Email</strong><a href="mailto:hello@abccapital.example">hello@abccapital.example</a></div></div>
+            <div class="contact-line"><span class="service-icon">✉</span><div><strong>Email</strong><a href="mailto:hello@abccapital.example">admin@monetacapital.in</a></div></div>
             <div class="contact-line"><span class="service-icon">⌖</span><div><strong>Office</strong><span>Add your office address here</span></div></div>
             <div class="contact-line"><span class="service-icon">◷</span><div><strong>Business hours</strong><span>Monday–Friday · 9:00 AM–5:00 PM</span></div></div>
           </div>
