@@ -27,6 +27,7 @@ jobs:
         run: |
           mkdir -p public
           cp public.html public/index.html
+          touch public/.nojekyll
 
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v3
