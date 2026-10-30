@@ -56,15 +56,35 @@
     .btn-ghost:hover { background: rgba(255,255,255,.08); }
     .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 29px; color: #a9bec9; font-size: .83rem; }
     .note-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; box-shadow: 0 0 0 5px rgba(57,198,176,.12); }
-    .visual-card { position: relative; padding: 26px; border: 1px solid rgba(255,255,255,.15); background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035)); border-radius: 28px; box-shadow: 0 35px 70px rgba(0,0,0,.18); }
-    .visual-top { display: flex; justify-content: space-between; align-items: center; color: #c3d3da; font-size: .83rem; }
-    .status { border: 1px solid rgba(57,198,176,.35); color: var(--teal); background: rgba(57,198,176,.09); padding: 5px 10px; border-radius: 999px; font-size: .72rem; }
-    .chart { width: 100%; height: auto; margin: 23px 0 8px; display: block; }
-    .visual-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .mini-stat { padding: 15px; border-radius: 16px; background: rgba(7,25,38,.42); }
-    .mini-stat span { display: block; color: #a8bbc6; font-size: .75rem; }
-    .mini-stat strong { display: block; font-size: 1.12rem; margin-top: 4px; }
-    .mini-stat em { color: var(--teal); font-style: normal; font-size: .78rem; }
+    .hero-image-wrap { position: relative; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.32), 0 0 0 1px rgba(255,255,255,.12); }
+    .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 28px; }
+    .hero-image-badge { position: absolute; bottom: 22px; left: 22px; right: 22px; display: flex; gap: 10px; }
+    .hero-badge-pill { flex: 1; padding: 11px 14px; border: 1px solid rgba(255,255,255,.18); background: rgba(10,31,48,.72); backdrop-filter: blur(12px); border-radius: 14px; color: #fff; font-size: .78rem; }
+    .hero-badge-pill span { display: block; color: var(--teal); font-weight: 700; font-size: .95rem; margin-top: 2px; }
+    /* Why Choose Us */
+    .why-section { background: var(--paper); }
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 10px; }
+    .why-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 28px; display: flex; gap: 20px; align-items: flex-start; transition: transform .22s, box-shadow .22s, border-color .22s; }
+    .why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: #b7e7de; }
+    .why-icon { width: 52px; height: 52px; flex: 0 0 52px; display: grid; place-items: center; border-radius: 16px; font-size: 1.5rem; background: linear-gradient(135deg, #e0f7f3, #c8f0e9); color: var(--teal-dark); }
+    .why-card h3 { margin: 0 0 7px; font-size: 1.07rem; color: var(--navy); line-height: 1.3; }
+    .why-card p { margin: 0; color: var(--muted); font-size: .91rem; line-height: 1.6; }
+    /* Partner CTA Banner */
+    .partner-banner { background: linear-gradient(120deg, var(--navy-deep) 0%, #0d3348 60%, #0a2535 100%); border-radius: 28px; padding: 52px 56px; display: flex; align-items: center; justify-content: space-between; gap: 36px; position: relative; overflow: hidden; }
+    .partner-banner:before { content: ""; position: absolute; width: 500px; height: 500px; border-radius: 50%; right: -100px; top: -250px; background: radial-gradient(circle, rgba(57,198,176,.18), rgba(57,198,176,0) 65%); pointer-events: none; }
+    .partner-banner > * { position: relative; z-index: 1; }
+    .partner-banner-text h2 { color: #fff; margin: 0 0 10px; font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+    .partner-banner-text p { color: #bfd0d8; margin: 0; font-size: 1rem; max-width: 520px; }
+    .partner-logo-area { flex: 0 0 auto; text-align: center; }
+    .partner-logo-box { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: 20px; padding: 22px 32px; backdrop-filter: blur(8px); }
+    .partner-logo-box .partner-name { color: #fff; font-size: 1.05rem; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+    .partner-logo-box .partner-sub { color: var(--teal); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-top: 2px; }
+    .partner-logo-icon { font-size: 2rem; margin-bottom: 4px; }
+    @media (max-width: 750px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .partner-banner { flex-direction: column; padding: 36px 28px; }
+      .partner-logo-area { width: 100%; }
+    }
     .trust-strip { background: #fff; border-bottom: 1px solid var(--line); }
     .trust-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 22px 0; }
     .trust-item { display: flex; align-items: center; justify-content: center; gap: 12px; color: #4d6471; font-size: .91rem; font-weight: 650; }
@@ -188,7 +208,7 @@
   <header>
     <nav class="container nav" aria-label="Main navigation">
       <a class="brand" href="#home" aria-label="Moneta Capital home">
-        <span class="brand-mark">A</span><span>Moneta CapitaL<small>CLARITY FOR WHAT'S NEXT</small></span>
+        <span class="brand-mark">M</span><span>Moneta Capital<small>CLARITY FOR WHAT'S NEXT</small></span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation menu">☰</button>
       <div class="nav-links" id="navLinks">
@@ -211,19 +231,11 @@
           </div>
           <div class="hero-note"><span class="note-dot"></span> Insight-led thinking. People-first relationships.</div>
         </div>
-        <div class="visual-card" aria-label="Illustrative market insights graphic">
-          <div class="visual-top"><span>Market perspective</span><span class="status">Long-term view</span></div>
-          <svg class="chart" viewBox="0 0 520 245" role="img" aria-label="Illustrative upward-trending line chart with no live market data">
-            <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#39c6b0" stop-opacity=".30"/><stop offset="100%" stop-color="#39c6b0" stop-opacity="0"/></linearGradient></defs>
-            <g stroke="#ffffff" stroke-opacity=".10" stroke-width="1"><path d="M20 35H500M20 80H500M20 125H500M20 170H500M20 215H500"/><path d="M80 20V220M160 20V220M240 20V220M320 20V220M400 20V220M480 20V220"/></g>
-            <path d="M20 195 C55 180,62 191,92 158 S135 170,165 137 S207 148,238 111 S280 132,311 90 S350 103,380 67 S425 86,450 45 S478 52,500 26 L500 220 L20 220Z" fill="url(#area)"/>
-            <path d="M20 195 C55 180,62 191,92 158 S135 170,165 137 S207 148,238 111 S280 132,311 90 S350 103,380 67 S425 86,450 45 S478 52,500 26" fill="none" stroke="#39c6b0" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="500" cy="26" r="6" fill="#39c6b0" stroke="#0a1f30" stroke-width="3"/>
-            <text x="20" y="239" fill="#a8bbc6" font-size="11">ILLUSTRATIVE TREND · NOT LIVE DATA</text>
-          </svg>
-          <div class="visual-bottom">
-            <div class="mini-stat"><span>Our focus</span><strong>Clarity first</strong><em>Understand before acting</em></div>
-            <div class="mini-stat"><span>Our mindset</span><strong>Long-term</strong><em>Built around your goals</em></div>
+        <div class="hero-image-wrap" aria-label="Moneta Capital financial services">
+          <img src="moneta-image.png" alt="Moneta Capital — Your Complete Financial Partner" loading="eager" />
+          <div class="hero-image-badge">
+            <div class="hero-badge-pill">Wealth Management<span>Personalised Solutions</span></div>
+            <div class="hero-badge-pill">Mirae Asset Sharekhan<span>Trusted Partner</span></div>
           </div>
         </div>
       </div>
@@ -236,6 +248,65 @@
         <div class="trust-item"><span class="trust-icon">↗</span> Focus on the bigger picture</div>
       </div>
     </div>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-section" id="why-us">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow">Why Choose Us</div>
+          <h2>Your Complete Financial Partner</h2>
+          <p>Everything you need to manage, grow, and protect your wealth — all under one trusted roof.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">💎</div>
+            <div>
+              <h3>Premium Wealth Management Services</h3>
+              <p>Personalised wealth solutions designed to help you manage and grow your wealth with clarity and confidence.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">📊</div>
+            <div>
+              <h3>Competitive Brokerage Rates</h3>
+              <p>Enjoy cost-effective brokerage plans with transparent pricing and greater value — no hidden charges.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">📈</div>
+            <div>
+              <h3>Attractive MTF Interest Rates</h3>
+              <p>Access competitive Margin Trading Facility (MTF) interest rates to support and amplify your trading needs.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🏛️</div>
+            <div>
+              <h3>All Financial Solutions Under One Roof</h3>
+              <p>Experience a comprehensive range of financial services through one trusted partner — seamless and integrated.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partner CTA Banner -->
+        <div class="partner-banner" style="margin-top: 52px;">
+          <div class="partner-banner-text">
+            <div class="eyebrow" style="color: var(--teal); margin-bottom: 14px;">Let Your Money Work Smarter for You!</div>
+            <h2>Partner with Mirae Asset Sharekhan</h2>
+            <p>Join thousands of investors who trust Mirae Asset Sharekhan for wealth management, brokerage, and financial solutions that go beyond the ordinary.</p>
+            <a class="btn btn-primary" href="#contact" style="margin-top: 24px; display: inline-flex;">Get Started Today <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="partner-logo-area">
+            <div class="partner-logo-box">
+              <div class="partner-logo-icon">🏦</div>
+              <div class="partner-name">Mirae Asset</div>
+              <div class="partner-name" style="font-size:.85rem; font-weight:600; color:#bfd0d8;">Sharekhan</div>
+              <div class="partner-sub">Trusted Financial Partner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="services">
       <div class="container">
@@ -289,7 +360,7 @@
       <div class="container about-grid">
         <div class="about-visual" aria-label="Abstract illustration representing connected financial ideas">
           <span class="floating-label one">Insight</span>
-          <div class="orbit"><div class="orbit-core">ABC</div></div>
+          <div class="orbit"><div class="orbit-core">M</div></div>
           <span class="floating-label two">Perspective</span>
         </div>
         <div class="about-copy">
@@ -365,7 +436,7 @@
     <div class="container">
       <div class="footer-top">
         <div>
-          <a class="brand" href="#home"><span class="brand-mark">A</span><span>Moneta CapitaL<small>CLARITY FOR WHAT'S NEXT</small></span></a>
+          <a class="brand" href="#home"><span class="brand-mark">M</span><span>Moneta Capital<small>CLARITY FOR WHAT'S NEXT</small></span></a>
           <p class="footer-copy">Clear information. Thoughtful perspectives. A more informed way to approach financial decisions.</p>
         </div>
         <div class="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="#approach">Our approach</a><a href="#contact">Contact</a><a href="#home">Back to top ↑</a></div>
